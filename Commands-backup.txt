@@ -1,0 +1,20 @@
+To get postgres in docker you can write: docker pull postgres
+
+Create the image for database: docker run --name <container-name> -e POSTGRES_PASSWORD=<password> -d <image name>
+
+Create your db: docker exec -u postgres <container-name> createdb <db-name>
+(the postgres after -u is the default username)
+
+Run the db: docker exec -it <container-name> psql -U <username> -d <db-name>
+
+In the db:
+Create table:
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	first_name VARCHAR(50),
+	last_name VARCHAR(50),
+	email VARCHAR(100),
+	date_of_birth DATE
+);
+
+View tables: \dt
